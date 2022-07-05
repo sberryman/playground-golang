@@ -1,5 +1,17 @@
 FROM golang:1.18.3-bullseye
 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+      ca-certificates \
+      gettext \
+      curl \
+      gettext-base \
+      bash
+
+ENV GONOSUMDB "go.bird.co/*"
+ENV GOPROXY "https://artifactory.svc.bird.co/artifactory/api/go/golang"
+
 # app dir
 WORKDIR /app
 
