@@ -17,7 +17,7 @@ var i int
 var j, k int = 1, 2
 
 func main() {
-	// testing()
+	testing_provider_connection()
 	testing_learning()
 
 }
