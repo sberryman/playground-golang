@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"runtime"
 	"time"
 
 	// "Testing_learning"
@@ -17,9 +18,16 @@ var i int
 var j, k int = 1, 2
 
 func main() {
-	testing_provider_connection()
-	testing_learning()
-
+	// testing_provider_connection()
+	// testing_learning()
+	// loop()
+	// loop2()
+	// fmt.Println(sqrt(2), sqrt(-4))
+	// fmt.Println(pow(3, 3, 1))
+	// fmt.Println(pow2(2, 5, 10))
+	// fmt.Println(Sqrt2(25))
+	// switchtest()
+	date()
 }
 
 func testing_learning() {
@@ -36,22 +44,20 @@ func testing_learning() {
 	fmt.Println(i, c, python, java)
 	var c, python, java = true, false, "no!"
 	fmt.Println(i, j, k, c, python, java)
+	v := 42
+	fmt.Printf("v is of type %T\n", v)
 }
-
 func add(x int, y int) int {
 	return x + y
 }
-
 func swap(x string, y string) (string, string) {
 	return y, x
 }
-
 func split(sum int) (x, y int) {
 	x = sum * 4 / 9
 	y = sum - x
 	return
 }
-
 func testing_provider_connection() {
 	// hologram
 	fmt.Println("Hologram: fetching iccid: 8935711001077014154")
@@ -83,5 +89,73 @@ func testing_provider_connection() {
 	} else {
 		fmt.Println("Verizon: device:", verizonDevice)
 	}
-
+}
+func loop() {
+	sum := 0
+	for i := 0; i < 4; i++ {
+		sum += i
+	}
+	fmt.Println(sum)
+}
+func loop2() {
+	sum := 1
+	loop := 1
+	for sum < 1000000000 { //there is normally a semicolon before and afer the sum<1000 because you need to define the init and post but these are optional
+		sum = sum + sum
+		fmt.Println("loop nº: ", loop, " value is :", sum)
+		loop = loop + 1
+	}
+	// fmt.Println("total: ", sum, " in ", loop-1, " loops")
+	fmt.Printf("loop n: %d value is: %d\n", loop, sum)
+}
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	}
+	return lim
+}
+func pow2(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	} else {
+		fmt.Printf("%f >= %g \n", v, lim)
+	}
+	return lim
+}
+func Sqrt2(x float64) float64 {
+	z := float64(1)
+	if z -= ((z*z - x) / (2 * z)); z < x {
+		// Println(z)
+		return z
+	} else {
+		fmt.Printf("nope: ")
+	}
+	return z
+}
+func switchtest() {
+	fmt.Println("Go runs on: ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		fmt.Printf("%s.\n", os)
+	}
+}
+func date() {
+	fmt.Println("When's Saturday?")
+	today := time.Now().Weekday()
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Today")
+	default:
+		fmt.Println("Not today")
+	}
 }
